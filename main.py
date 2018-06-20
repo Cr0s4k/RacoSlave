@@ -21,16 +21,16 @@ def send_welcome(message):
     
     _continue = True
     while(_continue):
-        result = subprocess.run(["python3", "lastPost.py"], stdout = subprocess.PIPE)
+        result = subprocess.run(["python3", "scrapper.py"], stdout = subprocess.PIPE)
         #bot.reply_to(message, result.stdout)
         if(result.stdout != last):
             bot.reply_to(message, "NUEVA NOTICIA IDI!")
             last = result.stdout
-            file = open("last.txt", "w")
+            file = open("last.json", "w")
             file.write(str(last))
             file.close()
             #Escribimos
-        time.sleep(10)
+        time.sleep(30)
 
 @bot.message_handler(commands=['Stop'])
 def send_finish(message):
@@ -48,7 +48,7 @@ def send_finish(message):
 def echo_all(message):
     bot.reply_to(message, message.text)
 
-file = open("last.txt", "r")
+file = open("last.json", "r")
 last = file.read()
 file.close()
 

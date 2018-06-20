@@ -1,2 +1,5 @@
 configuration.json
 last.txt
+
+__pycache__/
+*.py[cod]
