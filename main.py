@@ -7,7 +7,7 @@ def getToken():
             return data["botToken"]
 
 config = Configuration.read_configuration()
-token = config["token"]
+token = config["botToken"]
 bot = telebot.TeleBot(token)
 _continue = True
 

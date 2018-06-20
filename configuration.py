@@ -1,7 +1,7 @@
 import json
 
 class Configuration:
-    def read_configuration(self):
-        with open('credentials.json') as f:
+    def read_configuration():
+        with open('configuration.json') as f:
             data = json.load(f)
             return data
