@@ -1,5 +1,6 @@
 configuration.json
-last.txt
+result.json
+chromedriver
 
 __pycache__/
 *.py[cod]

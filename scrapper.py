@@ -5,17 +5,18 @@ from pprint import pprint
 import json
 
 class Scrapper():
-    def getResult():
-        config = Configuration.read_configuration()
+    def __init__ (self):
+        self.config = Configuration.read_configuration()
 
-        browser = webdriver.Chrome("./chromedriver")
+    def getResult(self):
+        browser = webdriver.Chrome(self.config["driverPath"])
         browser.get("https://raco.fib.upc.edu/cas/login")
 
         username = browser.find_element_by_id("username")
         password = browser.find_element_by_id("password")
 
-        username.send_keys(config["user"])
-        password.send_keys(config["password"])
+        username.send_keys(self.config["username"])
+        password.send_keys(self.config["password"])
 
         browser.find_element_by_id("submit_button").click()
         browser.find_element_by_class_name("botons_form").find_element_by_tag_name("input").click();
@@ -42,8 +43,8 @@ class Scrapper():
 
         return output
 
-    def writeResult(result):
-        with open("result.json", "w+") as file:
+    def writeResult(self, result):
+        with open(self.config["resultFile"], "w+") as file:
             json.dump(result, file, indent=4, ensure_ascii=False)
 
 if __name__ == "__main__":

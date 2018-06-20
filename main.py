@@ -4,11 +4,7 @@ import json
 from pprint import pprint
 from scrapper import Scrapper
 
-def getToken():
-    with open('credentials.json') as f:
-            data = json.load(f)
-            return data["botToken"]
-
+scrapper = Scrapper()
 config = Configuration.read_configuration()
 token = config["botToken"]
 bot = telebot.TeleBot(token)
@@ -24,12 +20,22 @@ def send_welcome(message):
     
     _continue = True
     while(_continue):
-        result = Scrapper.getResult()
-        if(result != last):
-            bot.reply_to(message, "NUEVA NOTICIA")
-            Scrapper.writeResult(result)
+        result = scrapper.getResult()
 
-        time.sleep(30)
+        pprint("RESULT")
+        pprint(result)
+
+        pprint("LAST")
+        pprint(last)
+
+        if(result != last):
+            last = result
+            bot.reply_to(message, "NUEVA NOTICIA")
+            scrapper.writeResult(result)
+        else:
+            bot.reply_to(message, "No news...")
+
+        time.sleep(10)
 
 @bot.message_handler(commands=['Stop'])
 def send_finish(message):
@@ -47,8 +53,12 @@ def send_finish(message):
 def echo_all(message):
     bot.reply_to(message, message.text)
 
-with open("result.json", "r") as file:
-    global last
-    last = json.load(file)
+try:
+    with open(config["resultFile"], "r") as file:
+        global last
+        last = json.load(file)
+except:
+    last = {}
+
 
 bot.polling()
