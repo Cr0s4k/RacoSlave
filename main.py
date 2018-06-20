@@ -1,12 +1,13 @@
 import telebot
-import json
+from configuration import Configuration
 
 def getToken():
     with open('credentials.json') as f:
             data = json.load(f)
             return data["botToken"]
 
-token = getToken()
+config = Configuration.read_configuration()
+token = config["token"]
 bot = telebot.TeleBot(token)
 _continue = True
 

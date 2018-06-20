@@ -1,14 +1,9 @@
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
-import json
-
-def readCredentials():
-    with open('credentials.json') as f:
-        data = json.load(f)
-        return (data["user"], data["password"])
+from configuration import Configuration
 
 if __name__ == "__main__":
-    credentials = readCredentials();
+    config = Configuration.read_configuration()
 
     browser = webdriver.Chrome("./chromedriver")
     browser.get("https://raco.fib.upc.edu/cas/login")
@@ -16,8 +11,8 @@ if __name__ == "__main__":
     username = browser.find_element_by_id("username")
     password = browser.find_element_by_id("password")
 
-    username.send_keys(credentials[0])
-    password.send_keys(credentials[1])
+    username.send_keys(config["user"])
+    password.send_keys(config["password"])
 
     browser.find_element_by_id("submit_button").click()
 
