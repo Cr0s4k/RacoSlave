@@ -5,7 +5,7 @@ from pprint import pprint
 import json
 
 class Scrapper():
-    def start():
+    def getResult():
         config = Configuration.read_configuration()
 
         browser = webdriver.Chrome("./chromedriver")
@@ -38,10 +38,14 @@ class Scrapper():
             item = {'subject': subject, 'notices': notices[i]}
             output.append(item)
 
-        with open("result.json", "w") as file:
-            json.dump(output, file, indent=4, ensure_ascii=False)
-
         browser.close()
 
+        return output
+
+    def writeResult(result):
+        with open("result.json", "w+") as file:
+            json.dump(result, file, indent=4, ensure_ascii=False)
+
 if __name__ == "__main__":
-    Scrapper.start()
+    res = Scrapper.start()
+    Scrapper.writeResult(res)

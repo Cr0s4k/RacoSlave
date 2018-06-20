@@ -2,6 +2,7 @@ import telebot
 from configuration import Configuration
 import json
 from pprint import pprint
+from scrapper import Scrapper
 
 def getToken():
     with open('credentials.json') as f:
@@ -23,17 +24,11 @@ def send_welcome(message):
     
     _continue = True
     while(_continue):
-        result = subprocess.run(["python3", "scrapper.py"], stdout = subprocess.PIPE)
-        if(result.stdout != last):
-            bot.reply_to(message, "NUEVA NOTICIA IDI!")
-            last = result.stdout
-            pprint(last)
-            with open("last.json", "w") as file:
-                json.dump(str(last), file)
-            # file.write(str(last)) 
-            # file.close()
+        result = Scrapper.getResult()
+        if(result != last):
+            bot.reply_to(message, "NUEVA NOTICIA")
+            Scrapper.writeResult(result)
 
-            #Escribimos
         time.sleep(30)
 
 @bot.message_handler(commands=['Stop'])
@@ -52,10 +47,8 @@ def send_finish(message):
 def echo_all(message):
     bot.reply_to(message, message.text)
 
-with open("last.json", "r") as file:
-    # last = file.read()
+with open("result.json", "r") as file:
     global last
     last = json.load(file)
-# file.close()
 
 bot.polling()
