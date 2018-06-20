@@ -26,7 +26,7 @@ def send_welcome(message):
 
             if(result != last):
                 last = result
-                if not firsTime: bot.reply_to(message, "New news!")
+                if not firsTime: bot.reply_to(message, "New notices!")
                 scrapper.writeResult(result)
             
             if firstTime: firstTime = False
@@ -49,6 +49,7 @@ def echo_all(message):
     bot.reply_to(message, message.text)
 
 
+## MAIN
 try:
     with open(config["resultFile"], "r") as file:
         global last
