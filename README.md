@@ -5,11 +5,15 @@ It works by scrapping
 
 ## Usage: 
 
-- Install libreries 
+- Install libreries
 
     ```pip3 install -r requirements.txt```
 
 - Download chrome driver from [here](http://chromedriver.chromium.org/downloads)
+
+- Install chromium (**Is not the same as chrome driver!**)
+
+    ```sudo apt-get install chromium-browser```
 
 - Rename configuration.copy.json to configuration.json and fill it
 
@@ -20,9 +24,14 @@ It works by scrapping
     ```python3 main.py```
 
 
-### About configuration.json
+## About configuration.json
     username: Raco username
     password: Raco password
     botToken: TelegramBotToken
     driverPath: Chrome driver path
     resultFile: Json file where you want to store results obtained with scrapping (Can be invented as result.json)
+
+## Bot commands
+**/start** -> Start program
+**/stop** -> Stop program
+**/show** -> Show last notices in json format
