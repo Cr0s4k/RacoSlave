@@ -32,11 +32,15 @@ It works by scrapping
     resultFile: Json file where you want to store results obtained with scrapping (Can be invented as result.json)
 
 ## Bot commands
-**/start** -> Start program
+**/Start** -> Start program
 
-**/stop** -> Stop program
+**/Stop** -> Stop program
 
-**/show** -> Show last notices in json format
+**/Show** -> Show all subjects with their notices
+
+**/Info** -> Get program info such as last update time
+
+**/Commands** -> Get commands and their description
 
 ## How to run in server
 In order to run RacoSlave in a server, you need to use virtual display flag or you will get error.
