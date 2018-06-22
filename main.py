@@ -82,4 +82,10 @@ if __name__ == "__main__":
     def echo_all(message):
         bot.reply_to(message, message.text)
 
-    bot.polling()
+    
+    while True:
+        try:
+            bot.polling(none_stop=True)
+        except Exception as e:
+            logger.error(e)
+            time.sleep(15)
