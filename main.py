@@ -34,7 +34,7 @@ if __name__ == "__main__":
 
                 if(result != last):
                     last = result
-                    if not firsTime: bot.reply_to(message, "New notices!")
+                    if not firstTime: bot.reply_to(message, "New notices!")
                     scrapper.writeResult(result)
                 
                 if firstTime: firstTime = False
