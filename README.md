@@ -29,7 +29,7 @@ It works by scrapping
     password: Raco password
     botToken: TelegramBotToken
     driverPath: Geckodriver path
-    resultFile: Json file where you want to store results obtained with scrapping (Can be invented as result.json)
+    timer: Time in minutes that define when we want to update our subjects/notices
 
 ## Bot commands
 **/Start** -> Start program
