@@ -9,7 +9,7 @@ class Scrapper():
         self.config = Configuration.read_configuration()
 
     def getResult(self):
-        browser = webdriver.Chrome(self.config["driverPath"])
+        browser = webdriver.Firefox(executable_path = self.config["driverPath"])
         browser.get("https://raco.fib.upc.edu/cas/login")
 
         username = browser.find_element_by_id("username")
@@ -48,5 +48,6 @@ class Scrapper():
             json.dump(result, file, indent=4, ensure_ascii=False)
 
 if __name__ == "__main__":
-    res = Scrapper.start()
-    Scrapper.writeResult(res)
+    scrapper = Scrapper()
+    res = scrapper.getResult()
+    scrapper.writeResult(res)

@@ -1,6 +1,7 @@
 configuration.json
 result.json
-chromedriver
+geckodriver
+geckodriver.log
 
 __pycache__/
 *.py[cod]

@@ -2,6 +2,6 @@
     "username": "",
     "password": "",
     "botToken": "",
-    "driverPath": "./chromedriver",
+    "driverPath": "./geckodriver",
     "resultFile": "result.json"
 }

@@ -9,11 +9,11 @@ It works by scrapping
 
     ```pip3 install -r requirements.txt```
 
-- Download chrome driver from [here](http://chromedriver.chromium.org/downloads)
+- Download geckodriver from [here](https://github.com/mozilla/geckodriver/releases)
 
-- Install chromium (**Is not the same as chrome driver!**)
+- Install firefox (**If it is not already installed**)
 
-    ```sudo apt-get install chromium-browser```
+    ```sudo apt-get install firefox```
 
 - Rename configuration.copy.json to configuration.json and fill it
 
@@ -21,17 +21,23 @@ It works by scrapping
 
 - Run main.py
 
-    ```python3 main.py```
+    ```python3 main.py [--vdisplay]```
 
 
 ## About configuration.json
     username: Raco username
     password: Raco password
     botToken: TelegramBotToken
-    driverPath: Chrome driver path
+    driverPath: Geckodriver path
     resultFile: Json file where you want to store results obtained with scrapping (Can be invented as result.json)
 
 ## Bot commands
 **/start** -> Start program
+
 **/stop** -> Stop program
+
 **/show** -> Show last notices in json format
+
+## How to run in server
+In order to run RacoSlave in a server, you need to use virtual display flag or you will get error.
+```python3 main.py --vdisplay```
